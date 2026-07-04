@@ -2,6 +2,7 @@ import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Pressable, SafeAreaView, ScrollView, Text, useWindowDimensions, View } from "react-native";
 import BottomNav from "../components/BottomNav";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const news = [
   {
@@ -39,6 +40,7 @@ const news = [
 export default function FeedScreen() {
   const { width } = useWindowDimensions();
   const isNarrow = width < 360;
+
 
   return (
     <SafeAreaView className="flex-1 bg-slate-100">

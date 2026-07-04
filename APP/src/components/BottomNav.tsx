@@ -1,5 +1,6 @@
 import { router } from "expo-router";
 import { Pressable, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type TabName = "feed" | "listen" | "bookmarks" | "profile";
 
@@ -13,6 +14,9 @@ const tabs = [
 export default function BottomNav({ active }: { active: TabName }) {
   const leftTabs = tabs.slice(0, 2);
   const rightTabs = tabs.slice(2);
+
+  // 1. Ambil nilai area aman layar
+  const insets = useSafeAreaInsets();
 
   const renderTab = (tab: (typeof tabs)[number]) => {
     const isActive = active === tab.name;
@@ -30,7 +34,12 @@ export default function BottomNav({ active }: { active: TabName }) {
   };
 
   return (
-    <View className="border-t border-slate-200 bg-white px-2 pb-1 shadow-2xl shadow-slate-500">
+    <View 
+      // 2. Hapus pb-1 dari sini agar tidak bentrok dengan padding dinamis
+      className="border-t border-slate-200 bg-white px-2 shadow-2xl shadow-slate-500"
+      // 3. Terapkan padding dinamis di sini (insets.bottom)
+      style={{ paddingBottom: Math.max(insets.bottom, 12) }}
+    >
       <View className="mx-auto w-full max-w-xl flex-row items-end">
         {leftTabs.map(renderTab)}
         <View className="flex-1 items-center">
@@ -40,7 +49,8 @@ export default function BottomNav({ active }: { active: TabName }) {
           >
             <Text className="text-2xl font-black text-white">✦</Text>
           </Pressable>
-          <Text className="mb-2 mt-1 text-[9px] font-black text-slate-950">Tanya AI</Text>
+          {/* Tambahkan sedikit margin bawah (mb-1) agar teks sejajar dengan menu lain */}
+          <Text className="mb-1 mt-1 text-[9px] font-black text-slate-950">Tanya AI</Text>
         </View>
         {rightTabs.map(renderTab)}
       </View>

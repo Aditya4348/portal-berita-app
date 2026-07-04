@@ -91,7 +91,7 @@ export default function LoginScreen() {
               />
             </View>
             <Pressable
-              onPress={() => router.push("/ask")}
+              onPress={() => router.replace("/feed")}
               className="h-14 flex-row items-center justify-center bg-red-600 active:bg-red-700"
             >
               <Text className="text-base font-extrabold text-white">Masuk ke ruang berita</Text>

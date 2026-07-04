@@ -29,7 +29,7 @@ export default function AskScreen() {
   const generateFeed = () => {
     if (isLoading) return;
     setIsLoading(true);
-    setTimeout(() => router.push("/feed"), 1100);
+    setTimeout(() => router.replace("/feed"), 1100);
   };
 
   return (
@@ -54,10 +54,9 @@ export default function AskScreen() {
                 <Text className="text-[8px] font-bold tracking-[2px] text-slate-500">PORTAL BERITA AI</Text>
               </View>
             </View>
-            <View className="flex-row items-center border border-slate-200 bg-white px-3 py-2 shadow-sm shadow-slate-200">
-              <View className="mr-2 h-2 w-2 rounded-full bg-emerald-500" />
-              <Text className="text-xs font-bold text-slate-600">Ruang AI aktif</Text>
-            </View>
+            <Pressable onPress={() => router.back()} className="border border-slate-300 bg-white px-4 py-2 shadow-sm shadow-slate-200">
+              <Text className="text-xs font-bold text-slate-700">Tutup</Text>
+            </Pressable>
           </View>
 
           <View className={isCompact ? "mt-7" : "mt-14"}>

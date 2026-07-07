@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
+use App\Enums\ArticleProcessingStatus;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Table;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Model;
 
 #[Table('articles')]
-#[Fillable(['source_website_id', 'title', 'original_url', 'ai_summary', 'audio_url', 'image_url', 'published_at'])]
+#[Fillable(['source_website_id', 'title', 'original_url', 'ai_summary', 'audio_url', 'image_url', 'published_at', 'processing_status'])]
 class Article extends Model
 {
     public function sourceWebsite(): BelongsTo
@@ -29,6 +30,7 @@ class Article extends Model
     {
         return [
             'published_at' => 'datetime',
+            'processing_status' => ArticleProcessingStatus::class,
         ];
     }
 }

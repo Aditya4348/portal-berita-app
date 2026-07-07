@@ -7,6 +7,15 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreTopicRequest extends FormRequest
 {
+    protected function prepareForValidation(): void
+    {
+        if ($this->has('data.attributes.topic_prompt')) {
+            $this->merge([
+                'topic_prompt' => $this->input('data.attributes.topic_prompt'),
+            ]);
+        }
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      */

@@ -33,8 +33,8 @@ Sebuah task dianggap selesai jika:
 - [ ✅✅ ] Tentukan prefix versi API, misalnya `/api/v1`.
 - [x] Tetapkan struktur response sukses, pagination, validation error, dan application error.
 - [x] Tetapkan format tanggal ISO 8601 dan timezone penyimpanan UTC.
-- [ ] Tetapkan daftar status untuk topik dan pemrosesan artikel.
-- [ ] Dokumentasikan endpoint, request, response, dan error code dalam `BACKEND/docs/api.md`.
+- [x] Tetapkan daftar status untuk topik dan pemrosesan artikel.
+- [x] Dokumentasikan endpoint, request, response, dan error code dalam `BACKEND/docs/api.md`.
 
 **Acceptance criteria:** Aplikasi mobile dan scraper dapat menggunakan kontrak tanpa membaca implementasi Laravel.
 

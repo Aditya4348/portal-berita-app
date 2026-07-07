@@ -7,6 +7,15 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreArticleChatRequest extends FormRequest
 {
+    protected function prepareForValidation(): void
+    {
+        if ($this->has('data.attributes.message')) {
+            $this->merge([
+                'message' => $this->input('data.attributes.message'),
+            ]);
+        }
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      */

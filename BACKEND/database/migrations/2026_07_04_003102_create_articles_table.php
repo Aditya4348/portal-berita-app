@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('source_website_id')->constrained()->cascadeOnDelete();
             $table->string('title');
-            $table->text('original_url')->unique();
+            $table->string('original_url', 512)->unique();
             $table->longText('ai_summary')->nullable();
             $table->text('audio_url')->nullable();
             $table->text('image_url')->nullable();

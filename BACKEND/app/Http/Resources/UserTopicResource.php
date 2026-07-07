@@ -14,7 +14,7 @@ class UserTopicResource extends JsonApiResource
     {
         return [
             'topic_prompt' => $this->topic_prompt,
-            'status' => $this->status,
+            'status' => $this->status->value,
             'created_at' => $this->created_at?->utc()->format('Y-m-d\\TH:i:s.v\\Z'),
             'updated_at' => $this->updated_at?->utc()->format('Y-m-d\\TH:i:s.v\\Z'),
         ];

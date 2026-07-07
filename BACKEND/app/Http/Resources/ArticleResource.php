@@ -20,6 +20,7 @@ class ArticleResource extends JsonApiResource
             'audio_url' => $this->audio_url,
             'image_url' => $this->image_url,
             'published_at' => $this->published_at?->utc()->format('Y-m-d\\TH:i:s.v\\Z'),
+            'processing_status' => $this->processing_status->value,
             'created_at' => $this->created_at?->utc()->format('Y-m-d\\TH:i:s.v\\Z'),
             'updated_at' => $this->updated_at?->utc()->format('Y-m-d\\TH:i:s.v\\Z'),
         ];

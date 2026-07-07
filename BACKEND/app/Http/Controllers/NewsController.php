@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ArticleProcessingStatus;
+use App\Enums\TopicStatus;
 use App\Http\Requests\StoreTopicRequest;
 use App\Http\Resources\ArticleResource;
 use App\Http\Resources\UserTopicResource;
@@ -18,7 +20,7 @@ class NewsController extends Controller
         $topic = UserTopic::query()->create([
             'user_id' => $request->user()->getKey(),
             'topic_prompt' => $request->validated('topic_prompt'),
-            'status' => 'pending',
+            'status' => TopicStatus::Pending,
         ]);
 
         return new UserTopicResource($topic);
@@ -27,6 +29,7 @@ class NewsController extends Controller
     public function feed(Request $request): AnonymousResourceCollection
     {
         $articles = Article::query()
+            ->where('processing_status', ArticleProcessingStatus::Ready)
             ->whereHas('sourceWebsite.topic', function (Builder $query) use ($request): void {
                 $query->where('user_id', $request->user()->getKey());
             })

@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { Pressable, SafeAreaView, ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import BottomNav from "../components/BottomNav";
 
 const queue = [
@@ -13,7 +14,7 @@ export default function ListenScreen() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <SafeAreaView className="flex-1 bg-slate-100">
+    <SafeAreaView className="flex-1 bg-slate-100 -mt-5">
       <StatusBar style="dark" />
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false} contentContainerClassName="pb-10">
         <View className="mx-auto w-full max-w-xl px-5 pt-6">

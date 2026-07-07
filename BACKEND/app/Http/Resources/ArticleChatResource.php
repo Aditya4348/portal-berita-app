@@ -16,7 +16,7 @@ class ArticleChatResource extends JsonApiResource
             'article_id' => $this->article_id,
             'sender_type' => $this->sender_type,
             'message' => $this->message,
-            'created_at' => $this->created_at,
+            'created_at' => $this->created_at?->utc()->format('Y-m-d\\TH:i:s.v\\Z'),
         ];
     }
 }

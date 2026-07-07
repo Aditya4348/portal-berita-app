@@ -1,8 +1,8 @@
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Pressable, SafeAreaView, ScrollView, Text, useWindowDimensions, View } from "react-native";
+import { Pressable, ScrollView, Text, useWindowDimensions, View } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import BottomNav from "../components/BottomNav";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const news = [
   {
@@ -43,7 +43,7 @@ export default function FeedScreen() {
 
 
   return (
-    <SafeAreaView className="flex-1 bg-slate-100">
+    <SafeAreaView className="flex-1 bg-slate-100 -mt-5">
       <StatusBar style="dark" />
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false} contentContainerClassName="pb-12 pt-5">
         <View className="mx-auto w-full max-w-xl px-4">

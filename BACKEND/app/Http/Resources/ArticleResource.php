@@ -19,9 +19,9 @@ class ArticleResource extends JsonApiResource
             'ai_summary' => $this->ai_summary,
             'audio_url' => $this->audio_url,
             'image_url' => $this->image_url,
-            'published_at' => $this->published_at,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'published_at' => $this->published_at?->utc()->format('Y-m-d\\TH:i:s.v\\Z'),
+            'created_at' => $this->created_at?->utc()->format('Y-m-d\\TH:i:s.v\\Z'),
+            'updated_at' => $this->updated_at?->utc()->format('Y-m-d\\TH:i:s.v\\Z'),
         ];
     }
 }
